@@ -4,6 +4,7 @@ using clawSoft.clawPDF.Core.Actions;
 using clawSoft.clawPDF.Core.Jobs;
 using clawSoft.clawPDF.Core.Settings;
 using clawSoft.clawPDF.Utilities;
+using FileInfo = clawSoft.clawPDF.Core.Settings.FileInfo;
 
 namespace clawSoft.clawPDF.Workflow
 {
@@ -33,7 +34,34 @@ namespace clawSoft.clawPDF.Workflow
 
             var outputFolder =
                 FileUtil.Instance.MakeValidFolderName(tr.ReplaceTokens(Job.Profile.AutoSave.TargetDirectory));
-            var filePath = Path.Combine(outputFolder, Job.ComposeOutputFilename());
+       
+            string filePath = "";
+            if (!string.IsNullOrEmpty(Job.OutFileName))
+            {
+                filePath = Path.Combine(outputFolder, Job.OutFileName);
+                Logger.Debug("打印文件生成路径 " + filePath);
+            }
+            else
+            {
+                string OutFileName = Job.ComposeOutputFilename();
+                filePath = Path.Combine(outputFolder, OutFileName);
+                Logger.Debug("打印文件生成路径 " + filePath);
+                //将文件信息写到注册表
+                Job.OutFileName = OutFileName;
+                string strTime = DateTime.Now.ToString() + DateTime.Now.Millisecond.ToString();
+                strTime = strTime.Replace("-", "");
+                strTime = strTime.Replace(" ", "");
+                strTime = strTime.Replace(":", "");
+                FileInfo info = new FileInfo();
+                info.JobId = System.Guid.NewGuid().ToString();
+                info.Name = OutFileName;
+                info.StartTime = strTime;
+                info.EndTime = "";
+                info.PrintState = "1";
+                FileName.Init();
+                FileName.modifyFileInfo(info);
+                Logger.Debug("打印文件信息写入注册表");
+            }
 
             try
             {

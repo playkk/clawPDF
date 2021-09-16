@@ -30,8 +30,10 @@ namespace clawSoft.clawPDF.Core.Settings
         public int SettingsVersion { get; set; }
 
         private void Init()
-        {
+        {   
+            //更新时间
             NextUpdate = DateTime.Now;
+            //版本号
             SettingsVersion = 5;
         }
 

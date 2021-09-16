@@ -23,6 +23,7 @@ namespace clawSoft.clawPDF.Core.Ghostscript
         public static void CallAPI(string[] args)
         {
             // Get a pointer to an instance of the Ghostscript API and run the API with the current arguments
+            // 获取指向Ghostscript API实例的指针，并使用当前参数运行该API
             IntPtr gsInstancePtr;
             lock (resourceLock)
             {

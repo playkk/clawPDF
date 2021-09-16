@@ -21,21 +21,30 @@ namespace clawSoft.clawPDF.Core.Settings
         {
             Init();
         }
-
+        /// <summary>
+        /// 是否开启自动保存
+        /// </summary>
         public bool Enabled { get; set; }
 
         /// <summary>
         ///     Existing files will not be overwritten. Existing filenames automatically get an appendix.
+        ///     是否保证文件名唯一性
         /// </summary>
         public bool EnsureUniqueFilenames { get; set; }
 
+        /// <summary>
+        /// 文件保存目录
+        /// </summary>
         public string TargetDirectory { get; set; }
 
         private void Init()
         {
-            Enabled = false;
+            //默认启用自动保存
+            Enabled = true;
+            //默认启用文件名的唯一
             EnsureUniqueFilenames = true;
-            TargetDirectory = "";
+            //默认保存文件路径
+            TargetDirectory = "C:\\TEMP\\PDF";
         }
 
         public void ReadValues(Data data, string path)
@@ -66,6 +75,7 @@ namespace clawSoft.clawPDF.Core.Settings
             {
                 TargetDirectory = "";
             }
+
         }
 
         public void StoreValues(Data data, string path)

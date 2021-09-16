@@ -10,6 +10,7 @@ namespace clawSoft.clawPDF.Shared.Helper
                 return;
 
             // required to make the binding work (default update trigger is "LostFocus")
+            // 使绑定工作所必需的（默认更新触发器为“LostFocus”）
             textBox.Focus();
 
             var newSelectionStart = textBox.SelectionStart + text.Length;

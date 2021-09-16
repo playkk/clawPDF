@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>clawSoft.clawPDF.Core</RootNamespace>
     <AssemblyName>clawPDF.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -115,6 +115,10 @@
       <Project>{884d14eb-6d78-41d8-b022-968209dd6ce4}</Project>
       <Name>clawPDF.Mail</Name>
     </ProjectReference>
+    <ProjectReference Include="..\clawPDF.Service\YGPrinter.Service.csproj">
+      <Project>{6B40094E-B93D-4EEE-8849-79B64FA256FF}</Project>
+      <Name>YGPrinter.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\clawPDF.Settings\clawPDF.Settings.csproj">
       <Project>{94936199-c9c7-4a5f-a58e-6123158e84f3}</Project>
       <Name>clawPDF.Settings</Name>
@@ -147,6 +151,12 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NLog">
+      <Version>4.5.11</Version>
+    </PackageReference>
+    <PackageReference Include="NLog.Config">
+      <Version>4.5.11</Version>
+    </PackageReference>
+    <PackageReference Include="NLog.Schema">
       <Version>4.5.11</Version>
     </PackageReference>
     <PackageReference Include="SystemWrapper.Interfaces">

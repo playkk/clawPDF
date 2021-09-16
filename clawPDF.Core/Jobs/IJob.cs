@@ -89,6 +89,16 @@ namespace clawSoft.clawPDF.Core.Jobs
         JobState JobState { get; }
 
         /// <summary>
+        ///     当前工作ID
+        /// </summary>
+        string JobId { get; set; }
+
+        /// <summary>
+        ///     当前输出文件名
+        /// </summary>
+        string OutFileName { get; set; }
+
+        /// <summary>
         ///     If true, the job has completed execution
         /// </summary>
         bool Completed { get; }

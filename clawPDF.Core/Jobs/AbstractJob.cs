@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using clawSoft.clawPDF.Core.Actions;
 using clawSoft.clawPDF.Core.Ghostscript.OutputDevices;
 using clawSoft.clawPDF.Core.Settings;
@@ -13,6 +15,9 @@ using clawSoft.clawPDF.Utilities.Tokens;
 using NLog;
 using SystemInterface.IO;
 using SystemWrapper.IO;
+using YGPrinter.Service;
+using FileInfo = clawSoft.clawPDF.Core.Settings.FileInfo;
+using PrintInfoVo = YGPrinter.Service.domian.PrintInfoVo;
 
 namespace clawSoft.clawPDF.Core.Jobs
 {
@@ -32,6 +37,9 @@ namespace clawSoft.clawPDF.Core.Jobs
         private string _currentOutputFile;
 
         private string _outfilebody;
+
+        //发送打印信息给RPA
+        private IProcessPrintInfoService processPrintInfoService;
 
         protected AbstractJob(IJobInfo jobInfo, ConversionProfile profile, JobTranslations jobTranslations)
             : this(jobInfo, profile, jobTranslations, new FileWrap(), new DirectoryWrap())
@@ -57,7 +65,40 @@ namespace clawSoft.clawPDF.Core.Jobs
 
             Profile = profile;
             TokenReplacer = GetTokenReplacer(); //important for testing without workflow
+
+            //设置打印文件信息到注册表
+            FileName.Init();
+            string filename = "";
+            string jobId = System.Guid.NewGuid().ToString();
+            FileInfo info = FileName.getFileInfoNoPrint();
+            if (null != info && !string.IsNullOrEmpty(info.Name))
+            {
+                Logger.Debug("匹配打印文件名成功" + info.Name);
+                info.JobId = jobId;
+                info.PrintState = "1";
+                info.EndTime = "";
+                FileName.modifyFileInfo(info);
+                OutFileName = info.Name;
+            }
+
+            //通知RPA,文件开始打印
+            string strTime = DateTime.Now.ToString() + DateTime.Now.Millisecond.ToString();
+            strTime = strTime.Replace("-", "");
+            strTime = strTime.Replace(" ", "");
+            strTime = strTime.Replace(":", "");
+            PrintInfoVo printInfo = new PrintInfoVo();
+            printInfo.jobId = jobId;
+            printInfo.startTime = strTime;
+            printInfo.endTime = "";
+            printInfo.printerName = "";
+            printInfo.fileName = "";
+            printInfo.filePath = "";
+
+
+
         }
+
+
 
         /// <summary>
         ///     Actions that will be executed after converting the job
@@ -65,6 +106,10 @@ namespace clawSoft.clawPDF.Core.Jobs
         public IList<IAction> JobActions { get; protected set; }
 
         public JobState JobState { get; set; }
+
+        public string JobId { get; set; }
+
+        public string OutFileName { get; set; }
 
         /// <summary>
         ///     An Error message with an internal state of what went wrong. May be untranslated.
@@ -251,6 +296,11 @@ namespace clawSoft.clawPDF.Core.Jobs
         {
             var outputFilename =
                 FileUtil.Instance.MakeValidFileName(TokenReplacer.ReplaceTokens(Profile.FileNameTemplate));
+            if (string.IsNullOrEmpty(outputFilename))
+            {
+                TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+                outputFilename = Convert.ToInt64(ts.TotalSeconds).ToString();
+            }
 
             switch (Profile.OutputFormat)
             {
@@ -291,6 +341,7 @@ namespace clawSoft.clawPDF.Core.Jobs
 
         /// <summary>
         ///     Runs the job and all actions
+        ///     运行作业和所有操作
         /// </summary>
         public JobState RunJob()
         {
@@ -399,6 +450,7 @@ namespace clawSoft.clawPDF.Core.Jobs
         ///     A list of output files produced during the conversion
         /// </summary>
         public IList<string> TempOutputFiles { get; set; }
+       
 
         public void CollectTemporaryOutputFiles()
         {
@@ -702,5 +754,7 @@ namespace clawSoft.clawPDF.Core.Jobs
                 Logger.Warn("Could not delete temporary file \"" + tempfile + "\"");
             }
         }
+
+
     }
 }

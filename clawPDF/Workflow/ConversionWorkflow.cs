@@ -149,6 +149,7 @@ namespace clawSoft.clawPDF.Workflow
             catch (ManagePrintJobsException)
             {
                 // revert metadata changes and rethrow exception
+                //还原元数据更改并重新引发异常
                 JobInfo.Metadata = originalMetadata;
                 throw;
             }
@@ -176,7 +177,28 @@ namespace clawSoft.clawPDF.Workflow
             Job.RunJob();
 
             if (!Job.Success) NotifyUserAboutFailedJob();
-
+            string strTime = DateTime.Now.ToString() + DateTime.Now.Millisecond.ToString();
+            strTime = strTime.Replace("-", "");
+            strTime = strTime.Replace(" ", "");
+            strTime = strTime.Replace(":", "");
+            Logger.Debug("打印结束时间" + strTime);
+            FileInfo info = new FileInfo();
+            FileName.Init();
+            if (Job.Success)
+            {
+                info = FileName.getFileInfoByName(Job.OutFileName);
+                info.PrintState = "2";
+                info.EndTime = strTime;
+                FileName.modifyFileInfo(info);
+            }
+            else
+            {
+                info = FileName.getFileInfoByName(Job.OutFileName);
+                info.PrintState = "-1";
+                info.EndTime = strTime;
+                FileName.modifyFileInfo(info);
+            }
+    
             WorkflowStep = WorkflowStep.Finished;
             OnJobFinished(EventArgs.Empty);
         }

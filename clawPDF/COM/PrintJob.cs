@@ -125,6 +125,7 @@ namespace clawSoft.clawPDF.COM
 
         /// <summary>
         ///     Converts the job to the specified location
+        ///     将作业转换到指定位置
         /// </summary>
         /// <param name="fullFileName">Specifies the location</param>
         public void ConvertTo(string fullFileName)
@@ -204,8 +205,9 @@ namespace clawSoft.clawPDF.COM
 
         /// <summary>
         ///     Sets the location where the job should be converted to and the jobs full name
+        ///     设置作业应转换到的位置和作业全名
         /// </summary>
-        /// <param name="fileName">Specifies the location and the name of the converted file</param>
+        /// <param name="fileName">Specifies the location and the name of the converted file 指定转换文件的位置和名称</param>
         private void LocationSetUp(string fileName)
         {
             if (fileName == null) return;

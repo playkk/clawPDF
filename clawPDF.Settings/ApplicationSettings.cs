@@ -47,7 +47,8 @@ namespace clawSoft.clawPDF.Core.Settings
             PrinterMappings = new List<PrinterMapping>();
             TitleReplacement = new List<TitleReplacement>();
             AskSwitchDefaultPrinter = true;
-            Language = "";
+            //д╛хожпнд
+            Language = "Chinese (Simplified)";
             LastUsedProfileGuid = "DefaultGuid";
             LoggingLevel = LoggingLevel.Error;
             PrimaryPrinter = "clawPDF";

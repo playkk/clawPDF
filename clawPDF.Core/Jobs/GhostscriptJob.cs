@@ -70,12 +70,29 @@ namespace clawSoft.clawPDF.Core.Jobs
 
             // Shorten the temp folder for GS compatibility
             JobTempFolder = JobTempFolder;
+
+            ///打印开始更新打印文件信息到注册表
+            ///
+           /*
+            FileName.Init();
+            OutFileName = FileName.getFileNnameNoPrint();
+            if (!string.IsNullOrEmpty(OutFileName))
+            {
+                JobId = System.Guid.NewGuid().ToString();
+                FileName.modifyFileInfoByFileName(OutFileName, FileName.JobId, JobId);
+                FileName.modifyFileInfoByFileName(OutFileName, FileName.PrintState, "1");
+                FileName.modifyFileInfoByFileName(OutFileName, FileName.StartTime, FileName.StartTime);
+                FileName.modifyFileInfoByFileName(OutFileName, FileName.EndTime, "");
+            }
+            */
+
         }
 
         private string GhostscriptOutput => _ghostscriptOutput.ToString();
 
         /// <summary>
         ///     Apply all Actions according to the configuration
+        ///     根据配置应用所有操作
         /// </summary>
         protected virtual void SetUpActions()
         {

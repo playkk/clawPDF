@@ -14,6 +14,7 @@ namespace clawSoft.clawPDF.Shared.Helper
 
         /// <summary>
         ///     List all printers that are connected to the CLAWMON: port
+        ///     列出连接到CLAWMON:port的所有打印机
         /// </summary>
         /// <returns>A Collection of clawPDF printers</returns>
         public virtual ICollection<string> GetclawPDFPrinters()

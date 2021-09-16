@@ -27,6 +27,7 @@ namespace clawSoft.clawPDF.Workflow
 
         /// <summary>
         ///     Create a new Workflow object with the given job info
+        ///     使用给定的作业信息创建新的工作流对象
         /// </summary>
         /// <param name="job">Job to use for the conversion</param>
         /// <param name="settings">Settigns to use during the conversion workflow</param>
