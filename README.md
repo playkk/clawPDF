@@ -1,4 +1,4 @@
-# clawPDF // PDFCreator 2.3 fork
+﻿# clawPDF // PDFCreator 2.3 fork
 
 Yet another PDF Printer? Yes! This PDF Printer has the intention to be completely open source.<br><br>
 Open Source virtual PDF printer for Windows 7 / 8 / 10 / 2008 / R2 / 2016 / 2019<br>
@@ -6,7 +6,8 @@ Print to PDF, PDF/A, PDF/X, PNG, JPEG, TIF and text
 
 # Download
 
-https://github.com/clawsoftware/clawPDF/releases/download/0.8.4/clawPDF_0.8.4_setup.msi
+链接：https://pan.baidu.com/s/1cxglZQZs-VUUTJLq97bXcw 
+提取码：o9q8
 
 # Tested under
 
@@ -17,6 +18,11 @@ https://github.com/clawsoftware/clawPDF/releases/download/0.8.4/clawPDF_0.8.4_se
 
 
 # Changelog
+
+## v0.8.4 (2019.02.15)
+1.默认安装语言为中文
+2.存储打印文件信息
+
 
 ## v0.8.4 (2019.06.11)
 
@@ -81,7 +87,7 @@ https://github.com/clawsoftware/clawPDF/releases/download/0.8.4/clawPDF_0.8.4_se
 # Third-party
 
 ## clawPDF uses the following licensed software or parts of the source code:
-
+- project code: https://github.com/clawsoftware/clawPDF
 - main code: PDFCreator 2.3 (https://github.com/pdfforge/PDFCreator), licensed under AGPL v3 license.
 - PDF library: iTextSharp 5.5.13 (https://github.com/itext/itextsharp), licensed under AGPL v3 license.
 - logging: Nlog 4.5.11 (https://github.com/NLog/NLog), licensed under BSD 3-Clause.
