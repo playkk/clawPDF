@@ -37,7 +37,9 @@ namespace clawSoft.clawPDF
 
             var tempFolderName = GetTempFolderName();
 
-            var tempFolderBase = Path.Combine(Path.GetTempPath(), tempFolderName);
+            //var tempFolderBase = Path.Combine(Path.GetTempPath(), tempFolderName);
+
+            var tempFolderBase = Path.Combine("C:\\TEMP\\", tempFolderName);
 
             SpoolFolder = Path.Combine(tempFolderBase, "Spool");
             _logger.Debug("Spool folder is '{0}'", SpoolFolder);

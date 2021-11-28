@@ -24,11 +24,13 @@ namespace clawSoft.clawPDF.Core.Settings
 
         /// <summary>
         ///     Enables the AttachmentPage action
+        ///     是否启用附件添加功能
         /// </summary>
         public bool Enabled { get; set; }
 
         /// <summary>
         ///     Filename of the PDF that will be appended
+        ///     将要添加的附件添加到PDF文件中
         /// </summary>
         public string File { get; set; }
 

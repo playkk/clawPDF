@@ -32,6 +32,7 @@ namespace clawSoft.clawPDF.Views.UserControls
         {
             var text = comboBox.Items[comboBox.SelectedIndex] as string;
             // use binding-safe way to insert text with settings focus
+            //使用绑定安全方式以设置焦点插入文本
             TextBoxHelper.InsertText(textBox, text);
         }
 

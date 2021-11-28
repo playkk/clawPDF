@@ -15,6 +15,7 @@ namespace clawSoft.clawPDF.Shared.ViewModels.Wrapper
     {
         /// <summary>
         ///     Create a new SynchronizedCollection that reflects changes that take place in the ObservableCollection.
+        ///     创建一个新的SynchronizedCollection，它反映了ObservableCollection中发生的更改。
         /// </summary>
         /// <param name="collection">The collection that will be kept in sync when changes to the ObservableCollection take place</param>
         public SynchronizedCollection(IList<T> collection)

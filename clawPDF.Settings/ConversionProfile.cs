@@ -179,10 +179,14 @@ namespace clawSoft.clawPDF.Core.Settings
             FileNameTemplate = "<Title>";
             Guid = "";
             Name = "NewProfile";
-            OpenViewer = true;
+            //默认打开文件
+            OpenViewer = false;
+            //默认生成PDF格式
             OutputFormat = OutputFormat.Pdf;
-            ShowProgress = true;
-            SkipPrintDialog = false;
+            //默认不展示转换进度
+            ShowProgress = false;
+            //默认不弹出打印窗口
+            SkipPrintDialog = true;
             TitleTemplate = "<PrintJobName>";
         }
 
@@ -441,6 +445,7 @@ namespace clawSoft.clawPDF.Core.Settings
         public override int GetHashCode()
         {
             // ReSharper disable once BaseObjectGetHashCodeCallInGetHashCode
+            // ReSharper禁用一次BaseObjectGetHashCodeCallInGetHashCode
             return base.GetHashCode();
         }
 

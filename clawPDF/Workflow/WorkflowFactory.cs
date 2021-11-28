@@ -15,6 +15,8 @@ namespace clawSoft.clawPDF.Workflow
         ///     Create a workflow based on the job and settings objects provided. This will create an AutoSave workflow if the
         ///     job's printer has an AutoSave profile associated or the default profile uses AutoSave.
         ///     Otherwise, an interactive workflow will be created.
+        ///     基于提供的作业和设置对象创建工作流。如果作业的打印机关联了自动保存配置文件或默认配置文件使用自动保存，
+        ///     则此操作将创建自动保存工作流。否则，将创建交互式工作流。
         /// </summary>
         /// <param name="jobInfo">The jobinfo used for the decision</param>
         /// <param name="settings">The settings used for the decision</param>
@@ -32,6 +34,7 @@ namespace clawSoft.clawPDF.Workflow
 
             var job = JobFactory.CreateJob(jobInfo, preselectedProfile, JobInfoQueue.Instance, jobTranslations);
             job.AutoCleanUp = true;
+            
 
             if (preselectedProfile.AutoSave.Enabled)
             {

@@ -180,6 +180,7 @@ namespace clawSoft.clawPDF.Core.Settings
 
         /// <summary>
         ///     Function that returns a profile from the inner Conversionprofiles(list) by a given guid.
+        ///     按给定的guid从内部转换配置文件（列表）返回配置文件的函数。
         /// </summary>
         /// <param name="guid">Guid to look for</param>
         /// <returns>(First) Conversionprofile with the given guid. Returns null, if no profile with given guid exists.</returns>
@@ -225,6 +226,8 @@ namespace clawSoft.clawPDF.Core.Settings
         ///     Function that returns the last used profile, according to the LastUsedProfileGuid of the ApplicationSettings.
         ///     If the Conversionprofiles(list) does not contain a profile with the LastUsedProfileGuid (because it was deleted)
         ///     or the last guid is null the function will return the first profile.
+        ///     根据应用程序设置的LastUsedProfileGuid返回上次使用的配置文件的函数。
+        ///     如果转换配置文件（列表）不包含具有LastUsedProfileGuid的配置文件（因为它已被删除）或者最后一个guid为空，函数将返回第一个配置文件。
         /// </summary>
         /// <returns>Returns last used or first profile. Returns null if ConversionProfiles is empty.</returns>
         public ConversionProfile GetLastUsedOrFirstProfile()

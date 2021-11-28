@@ -144,6 +144,7 @@ namespace clawSoft.clawPDF.ViewModels
                 {
                     ButtonClickedToClose = ButtonClickedToClose.None;
                     return; //Cancel if user wants to edit defective profiles
+                    //如果用户想编辑有缺陷的配置文件，请取消
                 }
 
             Settings.ApplicationSettings.LastUsedProfileGuid = CurrentProfile.Guid;

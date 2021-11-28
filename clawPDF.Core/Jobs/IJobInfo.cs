@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace clawSoft.clawPDF.Core.Jobs
 {
@@ -8,6 +9,7 @@ namespace clawSoft.clawPDF.Core.Jobs
         IList<SourceFileInfo> SourceFiles { get; }
         Metadata Metadata { get; set; }
         JobType JobType { get; set; }
+        int IsRegedit { get; set; }
 
         void SaveInf();
 

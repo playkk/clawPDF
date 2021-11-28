@@ -27,6 +27,8 @@ namespace clawSoft.clawPDF.Utilities.Tokens
         ///     Replace valid Token-names (previously added into the private TokenDict -> see AddToken) in the InputString by their
         ///     values.
         ///     Optional use of C#-format, declared behind a colon behind the Token-name.
+        ///     将InputString中的有效令牌名称（以前添加到private TokenDict->请参阅AddToken）替换为其值。
+        ///     可选使用C#-格式，在令牌名称后面的冒号后面声明。
         /// </summary>
         /// <param name="InputString">InputString which may contain Tokens, that will be replaced</param>
         /// <returns>

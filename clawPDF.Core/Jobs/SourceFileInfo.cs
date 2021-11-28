@@ -93,8 +93,12 @@ namespace clawSoft.clawPDF.Core.Jobs
 
             if (!Path.IsPathRooted(sfi.Filename))
                 sfi.Filename = Path.Combine(Path.GetDirectoryName(infFilename) ?? "", sfi.Filename);
+            string printerName = data.GetValue(section + "PinterName");
+            if (String.IsNullOrEmpty(printerName)) {
+                printerName = data.GetValue(section + "PrinterName");
+            }
+            sfi.PrinterName = printerName;
 
-            sfi.PrinterName = data.GetValue(section + "PrinterName");
 
             try
             {

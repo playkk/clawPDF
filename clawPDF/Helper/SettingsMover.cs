@@ -11,6 +11,9 @@ namespace clawSoft.clawPDF.Helper
     ///     They are now stored under HKEY_CURRENT_USER\Software\clawSoft\clawPDF
     ///     This class checks if old settings exist, if they need to be moved to the new location
     ///     and performs the move if required.
+    ///     最好将注册表设置存储在HKEY_CURRENT_USER\Software\CompanyName\ProductName下
+    ///     过去，我们将它们存储在HKEY_CURRENT_USER\Software\clawPDF.net下，现在它们存储在HKEY_CURRENT_USER\Software\clawSoft\clawPDF下
+    ///     该类检查是否存在旧设置，如果需要将它们移到新位置并在需要时执行该移动。
     /// </summary>
     public class SettingsMover
     {

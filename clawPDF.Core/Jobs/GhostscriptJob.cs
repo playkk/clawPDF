@@ -7,6 +7,7 @@ using clawSoft.clawPDF.Core.Ghostscript.OutputDevices;
 using clawSoft.clawPDF.Core.Settings;
 using clawSoft.clawPDF.Core.Settings.Enums;
 using clawSoft.clawPDF.PDFProcessing;
+using Newtonsoft.Json;
 using SystemInterface.IO;
 using SystemWrapper.IO;
 
@@ -69,13 +70,16 @@ namespace clawSoft.clawPDF.Core.Jobs
             DirectoryWrap.CreateDirectory(JobTempOutputFolder);
 
             // Shorten the temp folder for GS compatibility
+            //缩短临时文件夹以实现GS兼容性
             JobTempFolder = JobTempFolder;
+
         }
 
         private string GhostscriptOutput => _ghostscriptOutput.ToString();
 
         /// <summary>
         ///     Apply all Actions according to the configuration
+        ///     根据配置应用所有操作
         /// </summary>
         protected virtual void SetUpActions()
         {
@@ -163,6 +167,7 @@ namespace clawSoft.clawPDF.Core.Jobs
                 Logger.Debug("Starting Ghostscript Job");
 
                 OutputDevice device;
+                Logger.Info("转换输出格式：" + Profile.OutputFormat.ToString());
                 switch (Profile.OutputFormat)
                 {
                     case OutputFormat.PdfA1B:
@@ -191,7 +196,8 @@ namespace clawSoft.clawPDF.Core.Jobs
                     default:
                         throw new Exception("Illegal OutputFormat specified");
                 }
-
+                Logger.Info("转换输出路径：" + JobTempFolder);
+                Logger.Info("转换驱动信息：" + JsonConvert.SerializeObject(device));
                 Logger.Trace("Output format is: {0}", Profile.OutputFormat.ToString());
 
                 _ghostScript.Output += Ghostscript_Logging;

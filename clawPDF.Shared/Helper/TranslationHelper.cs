@@ -57,6 +57,7 @@ namespace clawSoft.clawPDF.Shared.Helper
 
         /// <summary>
         ///     Initialize the Translator for later use in the application
+        ///     初始化转换器以供以后在应用程序中使用
         /// </summary>
         /// <param name="assemblyHelper">AssemblyHelper that is used to determine the application folder</param>
         /// <param name="languageName">Language to use for initialization</param>
@@ -143,6 +144,7 @@ namespace clawSoft.clawPDF.Shared.Helper
         /// <summary>
         ///     Translates a profile list by searching for predefined translations based on their GUID and apply the translated
         ///     name to them
+        ///     通过基于GUID搜索预定义的翻译来转换配置文件列表，并将翻译后的名称应用于它们
         /// </summary>
         /// <param name="profiles">The profile list</param>
         public void TranslateProfileList(IList<ConversionProfile> profiles)

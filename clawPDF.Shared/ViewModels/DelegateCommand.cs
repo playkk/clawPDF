@@ -16,6 +16,7 @@ namespace clawSoft.clawPDF.Shared.ViewModels
 
         /// <summary>
         ///     Create a new DelegateCommand with the given delegates. If canExecute is not provided, it will always return true.
+        ///     使用给定的委托创建新的DelegateCommand。如果未提供canExecute，则它将始终返回true。
         /// </summary>
         /// <param name="execute">Will be called when the command is executed</param>
         /// <param name="canExecute">

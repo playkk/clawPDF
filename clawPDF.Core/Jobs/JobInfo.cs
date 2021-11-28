@@ -76,6 +76,8 @@ namespace clawSoft.clawPDF.Core.Jobs
 
         public Metadata Metadata { get; set; }
         public JobType JobType { get; set; }
+        //0默认, 1注册表, 2服务通知
+        public int IsRegedit { get; set; }
 
         /// <summary>
         ///     Save the inf file to the path from the InfFile property

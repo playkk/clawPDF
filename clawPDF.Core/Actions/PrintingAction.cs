@@ -22,6 +22,7 @@ namespace clawSoft.clawPDF.Core.Actions
 
         /// <summary>
         ///     Prints the input files to the configured printer
+        ///     将输入文件打印到配置的打印机
         /// </summary>
         /// <param name="job">The job to process</param>
         /// <returns>An ActionResult to determine the success and a list of errors</returns>

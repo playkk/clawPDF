@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>clawSoft.clawPDF.Utilities</RootNamespace>
     <AssemblyName>clawPDF.Utilities</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -79,8 +79,14 @@
     <Compile Include="WindowsApi\Kernel32.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="SystemWrapper.Interfaces">
-      <Version>0.25.0.186</Version>
+    <PackageReference Include="NLog">
+      <Version>4.5.11</Version>
+    </PackageReference>
+    <PackageReference Include="NLog.Config">
+      <Version>4.5.11</Version>
+    </PackageReference>
+    <PackageReference Include="NLog.Schema">
+      <Version>4.5.11</Version>
     </PackageReference>
     <PackageReference Include="SystemWrapper.Wrappers">
       <Version>0.25.0.186</Version>

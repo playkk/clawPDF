@@ -16,6 +16,7 @@ namespace clawSoft.clawPDF.Helper
 {
     /// <summary>
     ///     SettingsHelper provides static methods and properties to handle the settings.
+    ///     SettingsHelper提供处理设置的静态方法和属性。
     /// </summary>
     internal class SettingsHelper
     {
@@ -25,6 +26,8 @@ namespace clawSoft.clawPDF.Helper
         ///     Gets the current application-wide settings instance. The settings will be loaded if required.
         ///     If the settings have not been written before, a default set of settings with one default conversion profile will be
         ///     created.
+        ///     获取当前应用程序范围的设置实例。如果需要，将加载设置。
+        ///     如果之前未写入设置，则具有一个默认转换配置文件的默认设置集将为创建。
         /// </summary>
         public static clawPDFSettings Settings
         {
@@ -38,6 +41,7 @@ namespace clawSoft.clawPDF.Helper
 
         /// <summary>
         ///     Load the settings. If no valid settings exist for this user, default settings will be created.
+        ///     加载设置。如果此用户不存在有效设置，则将创建默认设置。
         /// </summary>
         private static void LoadSettings()
         {
@@ -102,19 +106,23 @@ namespace clawSoft.clawPDF.Helper
             var printers = printerHelper.GetclawPDFPrinters();
 
             // if there are no printers, something is broken and we need to fix that first
+            //如果没有打印机，就会出现故障，我们需要先修复
             if (!printers.Any())
                 return;
 
             //Assign DefaultProfile for all installed printers without mapped profile.
+            //为没有映射配置文件的所有已安装打印机分配默认配置文件。
             foreach (var printer in printers)
                 if (Settings.ApplicationSettings.PrinterMappings.All(o => o.PrinterName != printer))
                     Settings.ApplicationSettings.PrinterMappings.Add(new PrinterMapping(printer,
                         ProfileGuids.DEFAULT_PROFILE_GUID));
             //Remove uninstalled printers from mapping
+            //从映射中删除已卸载的打印机
             foreach (var mapping in Settings.ApplicationSettings.PrinterMappings.ToArray())
                 if (printers.All(o => o != mapping.PrinterName))
                     Settings.ApplicationSettings.PrinterMappings.Remove(mapping);
             //Check primary printer
+            //检查主打印机
             if (Settings.ApplicationSettings.PrinterMappings.All(o =>
                 o.PrinterName != Settings.ApplicationSettings.PrimaryPrinter))
                 Settings.ApplicationSettings.PrimaryPrinter =
@@ -159,6 +167,7 @@ namespace clawSoft.clawPDF.Helper
 
         /// <summary>
         ///     Saves the settings. An Exception will be thrown if the settings have not been previously loaded
+        ///     保存设置。如果之前未加载设置，则将引发异常
         /// </summary>
         public static void SaveSettings()
         {
@@ -511,6 +520,7 @@ namespace clawSoft.clawPDF.Helper
 
         /// <summary>
         ///     Create an empty settings class with the proper registry storage attached
+        ///     创建一个空的设置类，并附加正确的注册表存储
         /// </summary>
         /// <returns>An empty settings object</returns>
         public static clawPDFSettings CreateEmptySettings()
@@ -524,6 +534,7 @@ namespace clawSoft.clawPDF.Helper
 
         /// <summary>
         ///     Create an empty settings class with the proper registry storage attached
+        ///     创建一个空的设置类，并附加正确的注册表存储
         /// </summary>
         /// <returns>An empty settings object</returns>
         public static clawPDFSettings CreateSettings(IStorage storage)

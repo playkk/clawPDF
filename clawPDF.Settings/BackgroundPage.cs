@@ -27,26 +27,31 @@ namespace clawSoft.clawPDF.Core.Settings
 
         /// <summary>
         ///     Enables the BackgroundPage action
+        ///     是否启用添加PDF文件背景功能
         /// </summary>
         public bool Enabled { get; set; }
 
         /// <summary>
         ///     Filename of the PDF that will be used as background
+        ///     背景文件
         /// </summary>
         public string File { get; set; }
 
         /// <summary>
         ///     If true, the background will be placed on the attachment as well
+        ///     在附件上
         /// </summary>
         public bool OnAttachment { get; set; }
 
         /// <summary>
         ///     If true, the background will be placed on the cover as well
+        ///     在封面上
         /// </summary>
         public bool OnCover { get; set; }
 
         /// <summary>
         ///     Defines the way the background document is repeated. Valid values are: NoRepetition, RepeatAllPages, RepeatLastPage
+        ///     页的位置
         /// </summary>
         public BackgroundRepetition Repetition { get; set; }
 

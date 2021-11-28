@@ -1,9 +1,11 @@
 ﻿using System;
 using System.IO;
+using clawPDF.Service.utils;
 using clawSoft.clawPDF.Core.Actions;
 using clawSoft.clawPDF.Core.Jobs;
 using clawSoft.clawPDF.Core.Settings;
 using clawSoft.clawPDF.Utilities;
+using FileInfo = clawSoft.clawPDF.Core.Settings.FileInfo;
 
 namespace clawSoft.clawPDF.Workflow
 {
@@ -33,7 +35,10 @@ namespace clawSoft.clawPDF.Workflow
 
             var outputFolder =
                 FileUtil.Instance.MakeValidFolderName(tr.ReplaceTokens(Job.Profile.AutoSave.TargetDirectory));
-            var filePath = Path.Combine(outputFolder, Job.ComposeOutputFilename());
+
+            Job.OutFileName = Job.ComposeOutputFilename();
+            string filePath = Path.Combine(outputFolder, Job.OutFileName);
+            Logger.Debug("打印文件生成路径 " + filePath);
 
             try
             {
