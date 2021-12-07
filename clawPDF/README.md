@@ -13,6 +13,10 @@ Yet another PDF Printer? Yes! This PDF Printer has the intention to be completel
 
 # Changelog
 
+## v0.8.6 (2021.12.7)
+
+- [update]  版本号调整
+
 ## v0.8.5 (2019.06.11)
 
 - [bugfix]  unicode filename support (thx to daooze for bugreport)

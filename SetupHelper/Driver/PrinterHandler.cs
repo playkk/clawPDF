@@ -801,29 +801,51 @@ namespace clawSoft.clawPDF.SetupHelper.Driver
         private bool AddclawPDFPrinter()
         {
             bool printerAdded = false;
-            PRINTER_INFO_2 clawPDFPrinter = new PRINTER_INFO_2();
-
-            clawPDFPrinter.pServerName = null;
-            clawPDFPrinter.pPrinterName = PRINTERNAME;
-            clawPDFPrinter.pPortName = PORTNAME;
-            clawPDFPrinter.pDriverName = DRIVERNAME;
-            clawPDFPrinter.pPrintProcessor = PRINTPROCESOR;
-            clawPDFPrinter.pDatatype = "RAW";
-            clawPDFPrinter.Attributes = 0x00000002;
-
-            int clawPDFPrinterHandle = NativeMethods.AddPrinter(null, 2, ref clawPDFPrinter);
-            if (clawPDFPrinterHandle != 0)
-            {
-                // Added ok
-                int closeCode = NativeMethods.ClosePrinter((IntPtr)clawPDFPrinterHandle);
-                printerAdded = true;
-            }
-            else
-            {
-                Console.WriteLine("Could not add clawPDF virtual printer. " +
-                                          String.Format(WIN32ERROR, Marshal.GetLastWin32Error().ToString()));
+            printerAdded = AddCustomclawPDFPrinter("clawPDF");
+            if (printerAdded) { 
+                printerAdded = AddCustomclawPDFPrinter("clawPDFA");
+                if (printerAdded)
+                {
+                    printerAdded = AddCustomclawPDFPrinter("clawPDFB");
+                    if (printerAdded)
+                    {
+                        printerAdded = AddCustomclawPDFPrinter("clawPDFD");
+                        if (printerAdded)
+                        {
+                            printerAdded = AddCustomclawPDFPrinter("clawPDFE");
+                            if (printerAdded)
+                            {
+                                printerAdded = AddCustomclawPDFPrinter("clawPDFF");
+                            }
+                        }
+                    }
+                }
+       
             }
             return printerAdded;
+            /* PRINTER_INFO_2 clawPDFPrinter = new PRINTER_INFO_2();
+
+             clawPDFPrinter.pServerName = null;
+             clawPDFPrinter.pPrinterName = PRINTERNAME;
+             clawPDFPrinter.pPortName = PORTNAME;
+             clawPDFPrinter.pDriverName = DRIVERNAME;
+             clawPDFPrinter.pPrintProcessor = PRINTPROCESOR;
+             clawPDFPrinter.pDatatype = "RAW";
+             clawPDFPrinter.Attributes = 0x00000002;
+
+             int clawPDFPrinterHandle = NativeMethods.AddPrinter(null, 2, ref clawPDFPrinter);
+             if (clawPDFPrinterHandle != 0)
+             {
+                 // Added ok
+                 int closeCode = NativeMethods.ClosePrinter((IntPtr)clawPDFPrinterHandle);
+                 printerAdded = true;
+             }
+             else
+             {
+                 Console.WriteLine("Could not add clawPDF virtual printer. " +
+                                           String.Format(WIN32ERROR, Marshal.GetLastWin32Error().ToString()));
+             }
+             return printerAdded;*/
         }
 
         public bool AddCustomclawPDFPrinter(string name)
